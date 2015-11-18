@@ -8,9 +8,13 @@
     :copyright: (c) 2010 by Armin Ronacher.
     :license: BSD, see LICENSE for more details.
 """
+from __future__ import absolute_import
 import httplib2
 from functools import wraps
-from urlparse import urljoin
+try:
+	from urllib.parse import urljoin
+except ImportError:
+	from urlparse import urljoin
 from flask import request, session, json, redirect, Response
 from werkzeug import url_decode, url_encode, url_quote, \
      parse_options_header, Headers
